@@ -19,25 +19,24 @@ class App extends Component {
 
       // Get the contract instance.
       this.networkId = await this.web3.eth.net.getId();
+      console.log(this.networkId);
       this.CandyInstance = new this.web3.eth.Contract(
         CandyToken.abi,
-        CandyToken.networks[this.networkID] && CandyToken.networks[this.networkID].address,
+        CandyToken.networks[this.networkId] && CandyToken.networks[this.networkId].address,
       );
 
       this.SaleInstance = new this.web3.eth.Contract(
         CandyTokenSale.abi,
-        CandyTokenSale.networks[this.networkID] && CandyTokenSale.networks[this.networkID].address,
+        CandyTokenSale.networks[this.networkId] && CandyTokenSale.networks[this.networkId].address,
       );
 
       this.KYCInstance = new this.web3.eth.Contract(
         KYC.abi,
-        KYC.networks[this.networkID] && KYC.networks[this.networkID].address,
+        KYC.networks[this.networkId] && KYC.networks[this.networkId].address,
       );
-
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.listenToTokenTransfer();
-      this.setState({loaded:true, tokenSaleAddress:CandyTokenSale.networks[this.networkId].address}, this.updateUserTokens);
+      this.setState({loaded:true, tokenSaleAddress: CandyTokenSale.networks[this.networkId].address}, this.updateUserTokens);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -47,16 +46,16 @@ class App extends Component {
     }
   };
   updateUserTokens = async () => {
-    let userTokens = await this.tokenInstance.methods.balanceOf(this.accounts[0]).call();
+    let userTokens = await this.CandyInstance.methods.balanceOf(this.accounts[0]).call();
     this.setState({userTokens: userTokens});
   };
 
   listenToTokenTransfer = () => {
-    this.tokenInstance.events.Transfer({to: this.accounts[0]}).on("data",this.updateUserTokens);
+    this.CandyInstance.events.Transfer({to: this.accounts[0]}).on("data",this.updateUserTokens);
   };
 
   handleBuyTokens = async() => {
-    await this.tokenSaleInstance.methods.buyTokens(this.accounts[0]).send({from: this.accounts[0], value: this.web3.utils.toWei("1","wei")});
+    await this.SaleInstance.methods.buyTokens(this.accounts[0]).send({from: this.accounts[0], value: this.web3.utils.toWei("1","wei")});
   };
 
   handleInputChange = (event) => {
@@ -69,7 +68,7 @@ class App extends Component {
   };
 
   handleKycWhitelisting = async () => {
-    await this.kycInstance.methods.setKycCompleted(this.state.kycAddress).send({from: this.accounts[0]});
+    await this.KYCInstance.methods.setKycCompleted(this.state.kycAddress).send({from: this.accounts[0]});
     alert("KYC for "+this.state.kycAddress+" is completed");
   };
 
@@ -86,7 +85,7 @@ class App extends Component {
         <button type="button" onClick={this.handleKycWhitelisting}>Add to Whitelist</button>
         <h2>Buy Tokens</h2>
         <p>If you want to buy tokens, send Wei to this address: {this.state.tokenSaleAddress}</p>
-        <p>You currently have: {this.state.userTokens} CAPPU Tokens</p>
+        <p>You currently have: {this.state.userTokens} CDN</p>
         <button type="button" onClick={this.handleBuyTokens}>Buy more tokens</button>
       </div>
     );

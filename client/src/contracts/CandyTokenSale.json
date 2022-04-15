@@ -1676,7 +1676,7 @@
     "version": "0.6.2+commit.bacdbe57.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "1337": {
       "events": {},
       "links": {},
       "address": "0xb0F60F36b9BE94b4203E22b24c7F880E668D298D",
@@ -1684,7 +1684,7 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-04-15T19:51:12.347Z",
+  "updatedAt": "2022-04-15T22:33:42.382Z",
   "devdoc": {
     "methods": {
       "buyTokens(address)": {
