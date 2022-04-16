@@ -23,6 +23,12 @@ body {
   font-size: 72px;
 }
 
+.Sub-Title {
+  text-align: center;
+  font-family: "Amatic SC";
+  font-size: 36px;
+}
+
 #bottom-line {
   top: 15px;
   font-family: "Righteous";

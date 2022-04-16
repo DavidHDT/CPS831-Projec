@@ -92,12 +92,16 @@ class App extends Component {
                 onClick={this.handleKycWhitelisting}> Add Address to Whitelist
                   </button>
 
-                <h2>Buy Tokens</h2>
-                <p classname="instruction">If you want to buy tokens, send Wei to this address: {this.state.tokenSaleAddress}</p>
+
+                <h2 class="Sub-Title">Buy Tokens</h2>
                 <p id="wallet">You currently have: {this.state.userTokens} CDN</p>
+ 
                 <button className="button2"
                   onClick={this.handleBuyTokens}>Buy more tokens
-                  </button>
+                </button>
+
+                <p>If you want to buy tokens, send Wei to this address: {this.state.tokenSaleAddress}</p>
+
 
               </div>
 
