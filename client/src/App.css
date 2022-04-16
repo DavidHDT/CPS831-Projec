@@ -84,3 +84,9 @@ padding: 12px 20px;
   padding: 15px;
 }
 
+#wallet {
+  text-align: center;
+  font-family: "Righteous";
+  font-size: 24px;
+  font-weight:bold;
+}
