@@ -4,6 +4,7 @@ import CandyTokenSale from "./contracts/CandyTokenSale.json";
 import KYC from "./contracts/KYC.json";
 import getWeb3 from "./getWeb3";
 
+import { Flex, Button } from "@chakra-ui/core";
 import "./App.css";
 
 class App extends Component {
@@ -77,17 +78,34 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div className="App">
-        <h1>Candy Token</h1>
-        <p>Claim your token now</p>
-        <h2>KYC whitelisting</h2>
-        Address to allow: <input type="text" name="kycAddress" value={this.state.kycAddress} onChange={this.handleInputChange} />
-        <button type="button" onClick={this.handleKycWhitelisting}>Add to Whitelist</button>
-        <h2>Buy Tokens</h2>
-        <p>If you want to buy tokens, send Wei to this address: {this.state.tokenSaleAddress}</p>
-        <p>You currently have: {this.state.userTokens} CDN</p>
-        <button type="button" onClick={this.handleBuyTokens}>Buy more tokens</button>
-      </div>
+      <Flex justify="space-around" align="center" width="100%" padding="25px">
+          <div className="App">
+
+              <div className="overlay">
+
+                <h1 className="title">Candy Shop</h1>
+
+                <h2>Drop the receiving address down here:</h2>
+                <input className="input-field" type="text" name="kycAddress" value={this.state.kycAddress} onChange={this.handleInputChange}/>
+                <br></br>
+                <button className="button1" 
+                onClick={this.handleKycWhitelisting}> Add Address to Whitelist
+                  </button>
+
+                <h2>Buy Tokens</h2>
+                <p classname="instruction">If you want to buy tokens, send Wei to this address: {this.state.tokenSaleAddress}</p>
+                <p>You currently have: {this.state.userTokens} CDN</p>
+                <button className="button2"
+                  onClick={this.handleBuyTokens}>Buy more tokens
+                  </button>
+
+              </div>
+
+              <div className="moving-background"></div>
+          </div>
+        </Flex>
+
+
     );
   }
 }

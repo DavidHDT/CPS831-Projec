@@ -1,22 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .App {
   text-align: center;
+  font-family: "Amatic SC";
+  color:  rgb(255, 255, 255);
+  font-size: 22px;
 }
 
-.App-logo {
-  height: 40vmin;
+* {
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  overflow: hidden;
 }
 
-.App-link {
-  color: #09d3ac;
+.title {
+  text-align: center;
+  font-family: "MS Madi";
+  font-size: 72px;
 }
+
+#bottom-line {
+  top: 15px;
+  font-family: "Righteous";
+  font-size:40px;
+}
+.overlay {
+  opacity: 0.85;
+  width:100%;
+  height:100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.moving-background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./assets/background/parallax-bg.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 40% 40%;
+}
+
+.input-field {
+padding: 12px 20px;
+  font-size: 24px;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 2px;
+  text-align: center;
+  outline: transparent;
+  width: 40%;
+}
+
+.button1 {
+  color: #D6517D;;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px 1px #0F0F0F;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 25px;
+  padding: 15px;
+}
+
+.button2 {
+  color: #D6517D;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px 1px #0F0F0F;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px;
+}
+
